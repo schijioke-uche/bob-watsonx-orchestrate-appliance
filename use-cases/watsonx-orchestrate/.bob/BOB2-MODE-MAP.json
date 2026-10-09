@@ -1,0 +1,111 @@
+{
+  "release": "BOB2-43.0.0",
+  "appliance": "IBM Bob watsonx Orchestrate",
+  "records": [
+    {
+      "old_slug": "ask",
+      "new_slug": "general-ask",
+      "old_name": "Ask",
+      "name": "IBM Bob watsonx Orchestrate General Ask Appliance",
+      "source_rules": ".bob/rules-ask",
+      "target_rules": ".bob/rules-general-ask"
+    },
+    {
+      "old_slug": "code",
+      "new_slug": "general-code",
+      "old_name": "Code",
+      "name": "IBM Bob watsonx Orchestrate General Code Appliance",
+      "source_rules": ".bob/rules-code",
+      "target_rules": ".bob/rules-general-code"
+    },
+    {
+      "old_slug": "advanced",
+      "new_slug": "general-advance",
+      "old_name": "Advanced",
+      "name": "IBM Bob watsonx Orchestrate General Advance Appliance",
+      "source_rules": ".bob/rules-advanced",
+      "target_rules": ".bob/rules-general-advance"
+    },
+    {
+      "old_slug": "plan",
+      "new_slug": "plan",
+      "old_name": "Plan",
+      "name": "IBM Bob watsonx Orchestrate Plan Appliance",
+      "source_rules": ".bob/rules-plan",
+      "target_rules": ".bob/rules-plan"
+    },
+    {
+      "old_slug": "orchestrator",
+      "new_slug": "orchestrator",
+      "old_name": "Orchestrator",
+      "name": "IBM Bob watsonx Orchestrate Orchestrator Appliance",
+      "source_rules": ".bob/rules-orchestrator",
+      "target_rules": ".bob/rules-orchestrator"
+    },
+    {
+      "old_slug": "wxo-agent-architect",
+      "new_slug": "wxo-agent-architect",
+      "old_name": "WXO Agent Architect",
+      "name": "IBM Bob watsonx Orchestrate WXO Agent Architect Appliance",
+      "source_rules": ".bob/rules-wxo-agent-architect",
+      "target_rules": ".bob/rules-wxo-agent-architect"
+    },
+    {
+      "old_slug": "watsonx-orchestrate-code",
+      "new_slug": "code",
+      "old_name": "watsonx Orchestrate Code",
+      "name": "IBM Bob watsonx Orchestrate Code Appliance",
+      "source_rules": ".bob/rules-watsonx-orchestrate-code",
+      "target_rules": ".bob/rules-code"
+    },
+    {
+      "old_slug": "watsonx-orchestrate-advanced",
+      "new_slug": "advance",
+      "old_name": "watsonx Orchestrate Advanced",
+      "name": "IBM Bob watsonx Orchestrate Advance Appliance",
+      "source_rules": ".bob/rules-watsonx-orchestrate-advanced",
+      "target_rules": ".bob/rules-advance"
+    },
+    {
+      "old_slug": "watsonx-orchestrate-intelligence",
+      "new_slug": "ask",
+      "old_name": "watsonx Orchestrate Intelligence",
+      "name": "IBM Bob watsonx Orchestrate Ask Appliance",
+      "source_rules": ".bob/rules-watsonx-orchestrate-intelligence",
+      "target_rules": ".bob/rules-ask"
+    },
+    {
+      "old_slug": "drawio",
+      "new_slug": "drawio",
+      "old_name": "Draw.io",
+      "name": "IBM Bob watsonx Orchestrate Draw.io Appliance",
+      "source_rules": ".bob/rules-drawio",
+      "target_rules": ".bob/rules-drawio"
+    },
+    {
+      "old_slug": "graphql-dev",
+      "new_slug": "graphql-dev",
+      "old_name": "GraphQL Dev",
+      "name": "IBM Bob watsonx Orchestrate GraphQL Development Appliance",
+      "source_rules": ".bob/rules-graphql-dev",
+      "target_rules": ".bob/rules-graphql-dev"
+    }
+  ],
+  "menu_modes": {
+    "interactive": "wxo-agent-architect",
+    "ask": "ask",
+    "code": "code",
+    "advanced": "wxo-agent-architect",
+    "resume": "wxo-agent-architect"
+  },
+  "launcher_aliases": {
+    "WXO Agent Architect": "wxo-agent-architect",
+    "Draw.io": "drawio",
+    "GraphQL Dev": "graphql-dev",
+    "advanced": "general-advance",
+    "watsonx-orchestrate-code": "code",
+    "watsonx-orchestrate-advanced": "advance",
+    "watsonx-orchestrate-intelligence": "ask"
+  },
+  "native_alias_note": "Legacy aliases are resolved by xLaunchpad.sh environment overrides; native /mode uses canonical slugs."
+}

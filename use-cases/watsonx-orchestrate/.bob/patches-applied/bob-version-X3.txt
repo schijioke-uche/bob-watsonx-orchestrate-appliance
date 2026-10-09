@@ -1,0 +1,1 @@
+WXA built with corrected ROA baseline. Bob version defaults to 1.0.5. Physical launcher is bob-watsonx-orchestrate-v1.0.5.sh. Content uses v${BOB_VERSION}.
