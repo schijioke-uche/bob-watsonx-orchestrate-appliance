@@ -1,0 +1,95 @@
+{
+  "code": "WXA",
+  "folder": "watsonx-orchestrate",
+  "stem": "watsonx-orchestrate",
+  "title": "IBM Bob watsonx Orchestrate Agent (WXA)",
+  "design": "bob-watsonx-orchestrate-designs",
+  "store": "bob-watsonx-orchestrate-store",
+  "tools": ".bob/watsonx-orchestrate-tools",
+  "knowledgebase": null,
+  "modes": {
+    "interactive": "wxo-agent-architect",
+    "ask": "ask",
+    "code": "code",
+    "advanced": "wxo-agent-architect",
+    "resume": "wxo-agent-architect"
+  },
+  "aliases": {
+    "WXO Agent Architect": "wxo-agent-architect",
+    "Draw.io": "drawio",
+    "GraphQL Dev": "graphql-dev",
+    "advanced": "general-advance",
+    "watsonx-orchestrate-code": "code",
+    "watsonx-orchestrate-advanced": "advance",
+    "watsonx-orchestrate-intelligence": "ask"
+  },
+  "mode_slugs": [
+    "ask",
+    "code",
+    "advance",
+    "plan",
+    "orchestrator",
+    "wxo-agent-architect",
+    "general-ask",
+    "general-code",
+    "general-advance",
+    "drawio",
+    "graphql-dev"
+  ],
+  "rule_sources": {
+    "ask": ".bob/rules-ask",
+    "code": ".bob/rules-code",
+    "advance": ".bob/rules-advance",
+    "plan": ".bob/rules-plan",
+    "orchestrator": ".bob/rules-orchestrator",
+    "wxo-agent-architect": ".bob/rules-wxo-agent-architect",
+    "general-ask": ".bob/rules-general-ask",
+    "general-code": ".bob/rules-general-code",
+    "general-advance": ".bob/rules-general-advance",
+    "drawio": ".bob/rules-drawio",
+    "graphql-dev": ".bob/rules-graphql-dev"
+  },
+  "launcher_sha256": "677b7e659f6c6ef6560c993bded279d60724e78bcb516c4a2d3099e331cdf404",
+  "menu": {
+    "1": {
+      "action": "Start Interactive WXA Session",
+      "skill": "User Interactive"
+    },
+    "2": {
+      "action": "Ask watsonx Orchestrate Question",
+      "skill": "WXO Assist"
+    },
+    "3": {
+      "action": "watsonx Orchestrate Agent Build Assist",
+      "skill": "WXO Code"
+    },
+    "4": {
+      "action": "Advanced WXO Agent Architecture Design",
+      "skill": "WXO Agent Architect"
+    },
+    "5": {
+      "action": "Resume WXA Session (Picks: 1, 2, 3, or 4)",
+      "skill": "Resume latest"
+    }
+  },
+  "mode_names": {
+    "ask": "IBM Bob watsonx Orchestrate Ask Appliance",
+    "code": "IBM Bob watsonx Orchestrate Code Appliance",
+    "advance": "IBM Bob watsonx Orchestrate Advance Appliance",
+    "plan": "IBM Bob watsonx Orchestrate Plan Appliance",
+    "orchestrator": "IBM Bob watsonx Orchestrate Orchestrator Appliance",
+    "wxo-agent-architect": "IBM Bob watsonx Orchestrate WXO Agent Architect Appliance",
+    "general-ask": "IBM Bob watsonx Orchestrate General Ask Appliance",
+    "general-code": "IBM Bob watsonx Orchestrate General Code Appliance",
+    "general-advance": "IBM Bob watsonx Orchestrate General Advance Appliance",
+    "drawio": "IBM Bob watsonx Orchestrate Draw.io Appliance",
+    "graphql-dev": "IBM Bob watsonx Orchestrate GraphQL Development Appliance"
+  },
+  "search_label": "Search IBM Watsonx documentation",
+  "presentation": {
+    "release": "BOB2-43.0.0",
+    "run": "structured-search-status",
+    "chat": "native-search-json-collapse",
+    "plan": ".bob/BOB2-PRODUCTION-DISPLAY-PLAN.md"
+  }
+}

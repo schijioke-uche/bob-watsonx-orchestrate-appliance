@@ -1,0 +1,13 @@
+.env
+*.log
+*.tmp
+__pycache__/
+*.pyc
+wxo-adk-env/
+.wxo/tmp/
+.wxo/audit/
+.bob/patch-backups/
+.bob/backups/
+*.zip
+*.tar
+*.tgz

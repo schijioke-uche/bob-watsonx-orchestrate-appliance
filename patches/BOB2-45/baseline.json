@@ -1,0 +1,366 @@
+{
+  "RAA": {
+    "folder": "ansible",
+    "stem": "ansible",
+    "mode_count": 11,
+    "expected": {
+      ".bob/custom_modes.yaml": "97640d1e8631029b1c22840e7f13819b7a07bc8fed84713915073453c35263f1",
+      ".bob/runtime/bob-v2/runtime.py": "bde7e775bd5aa05f878cbc979c87460161f1169b7543fb5fc2bb3e35ba1f4ffa",
+      ".bob/runtime/bob-v2/production_display.py": "3e6852a709eef316869bd9d45d8a876ac6a2ac538ad8bde789cbd9d44718c5d1",
+      ".bob/hooks/bob2-context.py": "ed0f59d1a5e7842a19da9fe4e4050f813e7da5fcdee2d70018b59d61f91b5b67",
+      ".bob/BOB2-PRODUCTION-DISPLAY-PLAN.md": "4134bb34ec4ad0da9942c7a05302d1746d84ff41f69d8db8d824ffe07d630191",
+      ".bob/BOB2-RETRIEVAL-DISPLAY-POLICY.md": "98ce8180ab9da79284acc9305456589277e9d4ecc755bd88444e1ecbb53e70b1"
+    },
+    "preserved": {
+      "bob-auth.sh": {
+        "sha256": "83f2b0362d8f187c0bc543030bea4c9b85278027d0c7f293208d7dd72ca7256e",
+        "mode": 493
+      },
+      "tls-control.sh": {
+        "sha256": "ee7ca12efdd991b5030f3ebde3c62b8dbbe6055ef672818570f97e6e27a319de",
+        "mode": 493
+      },
+      ".bob/runtime/bob-v2/menu.sh": {
+        "sha256": "95f5e95d7c0ace656acbfc9949a01c6f00fb3afc3ea8a3cfe16c07c49427ab31",
+        "mode": 493
+      },
+      ".bob/runtime/bob-v2/load-env.sh": {
+        "sha256": "493d5537675d7baec86491099a7d68109c084ce6015e241fe41e862a64e1aaea",
+        "mode": 493
+      },
+      ".bob/runtime/bob-v2/auth-timeout.py": {
+        "sha256": "b4a18fa7a14dc3121bcb80fc0957b6e386c9788aa0bceeb7b99ad38319797355",
+        "mode": 493
+      },
+      "xLaunchpad.sh": {
+        "sha256": "647b690902f3285ea4f550a59f958834ce01d079b50b20940633266ca5de2c2f",
+        "mode": 493
+      },
+      ".bob/runtime/bob-v2/appliance.json": {
+        "sha256": "823892e2859c62bdf2917a96853b6f2cca5f53da4144f27afd08d94d133bb50b",
+        "mode": 420
+      },
+      ".bob/BOB2-MODE-MAP.json": {
+        "sha256": "71a42f497e7af577db395a2208a9446b3ad8a5cdd2f3032cfcc66486d5ee38b6",
+        "mode": 420
+      },
+      ".bob/settings.json": {
+        "sha256": "dfec19b7fe758bdad77425b074c6983299e39b2c65a82aaa66b0643cab7ca213",
+        "mode": 420
+      }
+    },
+    "launcher_sha256": "677b7e659f6c6ef6560c993bded279d60724e78bcb516c4a2d3099e331cdf404"
+  },
+  "ROA": {
+    "folder": "openshift",
+    "stem": "openshift",
+    "mode_count": 11,
+    "expected": {
+      ".bob/custom_modes.yaml": "a5e417f65993029cd7f5e47a402a16eead25504132981599ec4439dfb57cd663",
+      ".bob/runtime/bob-v2/runtime.py": "bde7e775bd5aa05f878cbc979c87460161f1169b7543fb5fc2bb3e35ba1f4ffa",
+      ".bob/runtime/bob-v2/production_display.py": "3e6852a709eef316869bd9d45d8a876ac6a2ac538ad8bde789cbd9d44718c5d1",
+      ".bob/hooks/bob2-context.py": "ed0f59d1a5e7842a19da9fe4e4050f813e7da5fcdee2d70018b59d61f91b5b67",
+      ".bob/BOB2-PRODUCTION-DISPLAY-PLAN.md": "4134bb34ec4ad0da9942c7a05302d1746d84ff41f69d8db8d824ffe07d630191",
+      ".bob/BOB2-RETRIEVAL-DISPLAY-POLICY.md": "98ce8180ab9da79284acc9305456589277e9d4ecc755bd88444e1ecbb53e70b1"
+    },
+    "preserved": {
+      "bob-auth.sh": {
+        "sha256": "83f2b0362d8f187c0bc543030bea4c9b85278027d0c7f293208d7dd72ca7256e",
+        "mode": 493
+      },
+      "tls-control.sh": {
+        "sha256": "ee7ca12efdd991b5030f3ebde3c62b8dbbe6055ef672818570f97e6e27a319de",
+        "mode": 493
+      },
+      ".bob/runtime/bob-v2/menu.sh": {
+        "sha256": "5afab4522ce0e8aabf201ee7c23f97e6977ef00149a1c742edbb9f8983d3b338",
+        "mode": 493
+      },
+      ".bob/runtime/bob-v2/load-env.sh": {
+        "sha256": "493d5537675d7baec86491099a7d68109c084ce6015e241fe41e862a64e1aaea",
+        "mode": 493
+      },
+      ".bob/runtime/bob-v2/auth-timeout.py": {
+        "sha256": "b4a18fa7a14dc3121bcb80fc0957b6e386c9788aa0bceeb7b99ad38319797355",
+        "mode": 493
+      },
+      "xLaunchpad.sh": {
+        "sha256": "647b690902f3285ea4f550a59f958834ce01d079b50b20940633266ca5de2c2f",
+        "mode": 493
+      },
+      ".bob/runtime/bob-v2/appliance.json": {
+        "sha256": "a791245aff8297fcd9729eb722a5570a4d6c062f4a2c356cc5cbbe93e576162d",
+        "mode": 420
+      },
+      ".bob/BOB2-MODE-MAP.json": {
+        "sha256": "eac0f0d3b3f665a4e62373ab1435a5fe09cfc3cb3ce00783671e602f672bf6dc",
+        "mode": 420
+      },
+      ".bob/settings.json": {
+        "sha256": "dfec19b7fe758bdad77425b074c6983299e39b2c65a82aaa66b0643cab7ca213",
+        "mode": 420
+      }
+    },
+    "launcher_sha256": "677b7e659f6c6ef6560c993bded279d60724e78bcb516c4a2d3099e331cdf404"
+  },
+  "QVC": {
+    "folder": "qse-vulnerable-code",
+    "stem": "qse-vulnerable-code",
+    "mode_count": 11,
+    "expected": {
+      ".bob/custom_modes.yaml": "d65a20826e0a69566bee7c5e7f3011f23b7c9a6cd44ad2566a02164484c3c96a",
+      ".bob/runtime/bob-v2/runtime.py": "bde7e775bd5aa05f878cbc979c87460161f1169b7543fb5fc2bb3e35ba1f4ffa",
+      ".bob/runtime/bob-v2/production_display.py": "3e6852a709eef316869bd9d45d8a876ac6a2ac538ad8bde789cbd9d44718c5d1",
+      ".bob/hooks/bob2-context.py": "ed0f59d1a5e7842a19da9fe4e4050f813e7da5fcdee2d70018b59d61f91b5b67",
+      ".bob/BOB2-PRODUCTION-DISPLAY-PLAN.md": "4134bb34ec4ad0da9942c7a05302d1746d84ff41f69d8db8d824ffe07d630191",
+      ".bob/BOB2-RETRIEVAL-DISPLAY-POLICY.md": "98ce8180ab9da79284acc9305456589277e9d4ecc755bd88444e1ecbb53e70b1"
+    },
+    "preserved": {
+      "bob-auth.sh": {
+        "sha256": "83f2b0362d8f187c0bc543030bea4c9b85278027d0c7f293208d7dd72ca7256e",
+        "mode": 493
+      },
+      "tls-control.sh": {
+        "sha256": "ee7ca12efdd991b5030f3ebde3c62b8dbbe6055ef672818570f97e6e27a319de",
+        "mode": 493
+      },
+      ".bob/runtime/bob-v2/menu.sh": {
+        "sha256": "7745052a4d5abd6d18b97baa134cd8a85d37e3e58cb8eb7b3f706117d98f6ff8",
+        "mode": 493
+      },
+      ".bob/runtime/bob-v2/load-env.sh": {
+        "sha256": "493d5537675d7baec86491099a7d68109c084ce6015e241fe41e862a64e1aaea",
+        "mode": 493
+      },
+      ".bob/runtime/bob-v2/auth-timeout.py": {
+        "sha256": "b4a18fa7a14dc3121bcb80fc0957b6e386c9788aa0bceeb7b99ad38319797355",
+        "mode": 493
+      },
+      "xLaunchpad.sh": {
+        "sha256": "647b690902f3285ea4f550a59f958834ce01d079b50b20940633266ca5de2c2f",
+        "mode": 493
+      },
+      ".bob/runtime/bob-v2/appliance.json": {
+        "sha256": "6c580c928b02bf7e472c7b870de3385d15f76f820d288c9752d0a3e22a1dfe9b",
+        "mode": 420
+      },
+      ".bob/BOB2-MODE-MAP.json": {
+        "sha256": "7d6f28583899a638d2466f21dc62574822a35c47b34abd9f43f4d7b663334922",
+        "mode": 420
+      },
+      ".bob/settings.json": {
+        "sha256": "dfec19b7fe758bdad77425b074c6983299e39b2c65a82aaa66b0643cab7ca213",
+        "mode": 420
+      }
+    },
+    "launcher_sha256": "677b7e659f6c6ef6560c993bded279d60724e78bcb516c4a2d3099e331cdf404"
+  },
+  "SWA": {
+    "folder": "software-hub",
+    "stem": "software-hub",
+    "mode_count": 11,
+    "expected": {
+      ".bob/custom_modes.yaml": "fe0475b016764df57e75592b7c5c3b1860c8e778fad2f04f03c5f4135ad22661",
+      ".bob/runtime/bob-v2/runtime.py": "bde7e775bd5aa05f878cbc979c87460161f1169b7543fb5fc2bb3e35ba1f4ffa",
+      ".bob/runtime/bob-v2/production_display.py": "3e6852a709eef316869bd9d45d8a876ac6a2ac538ad8bde789cbd9d44718c5d1",
+      ".bob/hooks/bob2-context.py": "ed0f59d1a5e7842a19da9fe4e4050f813e7da5fcdee2d70018b59d61f91b5b67",
+      ".bob/BOB2-PRODUCTION-DISPLAY-PLAN.md": "4134bb34ec4ad0da9942c7a05302d1746d84ff41f69d8db8d824ffe07d630191",
+      ".bob/BOB2-RETRIEVAL-DISPLAY-POLICY.md": "98ce8180ab9da79284acc9305456589277e9d4ecc755bd88444e1ecbb53e70b1"
+    },
+    "preserved": {
+      "bob-auth.sh": {
+        "sha256": "83f2b0362d8f187c0bc543030bea4c9b85278027d0c7f293208d7dd72ca7256e",
+        "mode": 493
+      },
+      "tls-control.sh": {
+        "sha256": "ee7ca12efdd991b5030f3ebde3c62b8dbbe6055ef672818570f97e6e27a319de",
+        "mode": 493
+      },
+      ".bob/runtime/bob-v2/menu.sh": {
+        "sha256": "e1f6ffaf810431aacbbad588d3bfbda02c3a0f8f9237320b8e3a25e3a2851056",
+        "mode": 493
+      },
+      ".bob/runtime/bob-v2/load-env.sh": {
+        "sha256": "493d5537675d7baec86491099a7d68109c084ce6015e241fe41e862a64e1aaea",
+        "mode": 493
+      },
+      ".bob/runtime/bob-v2/auth-timeout.py": {
+        "sha256": "b4a18fa7a14dc3121bcb80fc0957b6e386c9788aa0bceeb7b99ad38319797355",
+        "mode": 493
+      },
+      "xLaunchpad.sh": {
+        "sha256": "647b690902f3285ea4f550a59f958834ce01d079b50b20940633266ca5de2c2f",
+        "mode": 493
+      },
+      ".bob/runtime/bob-v2/appliance.json": {
+        "sha256": "e46167a2d6052b0d8cb5fa503bf7d79423da351a3315a99cb0d09b789b5b2987",
+        "mode": 420
+      },
+      ".bob/BOB2-MODE-MAP.json": {
+        "sha256": "779719d5035b129ca6e1265ac18396029b7eb05b52dc27a5752d29c638f379de",
+        "mode": 420
+      },
+      ".bob/settings.json": {
+        "sha256": "dfec19b7fe758bdad77425b074c6983299e39b2c65a82aaa66b0643cab7ca213",
+        "mode": 420
+      }
+    },
+    "launcher_sha256": "677b7e659f6c6ef6560c993bded279d60724e78bcb516c4a2d3099e331cdf404"
+  },
+  "TIA": {
+    "folder": "terraform",
+    "stem": "terraform",
+    "mode_count": 9,
+    "expected": {
+      ".bob/custom_modes.yaml": "436f52959e8509f1f5f9cddeed977d477b9e021dd38566e90bb75dcf0cbf424b",
+      ".bob/runtime/bob-v2/runtime.py": "bde7e775bd5aa05f878cbc979c87460161f1169b7543fb5fc2bb3e35ba1f4ffa",
+      ".bob/runtime/bob-v2/production_display.py": "3e6852a709eef316869bd9d45d8a876ac6a2ac538ad8bde789cbd9d44718c5d1",
+      ".bob/hooks/bob2-context.py": "ed0f59d1a5e7842a19da9fe4e4050f813e7da5fcdee2d70018b59d61f91b5b67",
+      ".bob/BOB2-PRODUCTION-DISPLAY-PLAN.md": "4134bb34ec4ad0da9942c7a05302d1746d84ff41f69d8db8d824ffe07d630191",
+      ".bob/BOB2-RETRIEVAL-DISPLAY-POLICY.md": "98ce8180ab9da79284acc9305456589277e9d4ecc755bd88444e1ecbb53e70b1"
+    },
+    "preserved": {
+      "bob-auth.sh": {
+        "sha256": "83f2b0362d8f187c0bc543030bea4c9b85278027d0c7f293208d7dd72ca7256e",
+        "mode": 493
+      },
+      "tls-control.sh": {
+        "sha256": "ee7ca12efdd991b5030f3ebde3c62b8dbbe6055ef672818570f97e6e27a319de",
+        "mode": 493
+      },
+      ".bob/runtime/bob-v2/menu.sh": {
+        "sha256": "dbb83d35e25db0a914ae0c612939cd2c092fd7906fb7c7e82d98ab5729a262d3",
+        "mode": 493
+      },
+      ".bob/runtime/bob-v2/load-env.sh": {
+        "sha256": "493d5537675d7baec86491099a7d68109c084ce6015e241fe41e862a64e1aaea",
+        "mode": 493
+      },
+      ".bob/runtime/bob-v2/auth-timeout.py": {
+        "sha256": "b4a18fa7a14dc3121bcb80fc0957b6e386c9788aa0bceeb7b99ad38319797355",
+        "mode": 493
+      },
+      "xLaunchpad.sh": {
+        "sha256": "647b690902f3285ea4f550a59f958834ce01d079b50b20940633266ca5de2c2f",
+        "mode": 493
+      },
+      ".bob/runtime/bob-v2/appliance.json": {
+        "sha256": "3d0916b82c1145592e008bd491e143ee8b7ceebf022d248ddb82e2a7f4705cdb",
+        "mode": 420
+      },
+      ".bob/BOB2-MODE-MAP.json": {
+        "sha256": "c748bc78dcb39db2d1e8cf715e1232c67cf266ed796d00a8c00440297ea254e9",
+        "mode": 420
+      },
+      ".bob/settings.json": {
+        "sha256": "dfec19b7fe758bdad77425b074c6983299e39b2c65a82aaa66b0643cab7ca213",
+        "mode": 420
+      }
+    },
+    "launcher_sha256": "677b7e659f6c6ef6560c993bded279d60724e78bcb516c4a2d3099e331cdf404"
+  },
+  "WXA": {
+    "folder": "watsonx-orchestrate",
+    "stem": "watsonx-orchestrate",
+    "mode_count": 11,
+    "expected": {
+      ".bob/custom_modes.yaml": "da017247e47d249e75000cf351142b6f2c9234d31546b461f79b40bdb230880d",
+      ".bob/runtime/bob-v2/runtime.py": "bde7e775bd5aa05f878cbc979c87460161f1169b7543fb5fc2bb3e35ba1f4ffa",
+      ".bob/runtime/bob-v2/production_display.py": "3e6852a709eef316869bd9d45d8a876ac6a2ac538ad8bde789cbd9d44718c5d1",
+      ".bob/hooks/bob2-context.py": "ed0f59d1a5e7842a19da9fe4e4050f813e7da5fcdee2d70018b59d61f91b5b67",
+      ".bob/BOB2-PRODUCTION-DISPLAY-PLAN.md": "4134bb34ec4ad0da9942c7a05302d1746d84ff41f69d8db8d824ffe07d630191",
+      ".bob/BOB2-RETRIEVAL-DISPLAY-POLICY.md": "98ce8180ab9da79284acc9305456589277e9d4ecc755bd88444e1ecbb53e70b1"
+    },
+    "preserved": {
+      "bob-auth.sh": {
+        "sha256": "83f2b0362d8f187c0bc543030bea4c9b85278027d0c7f293208d7dd72ca7256e",
+        "mode": 493
+      },
+      "tls-control.sh": {
+        "sha256": "ee7ca12efdd991b5030f3ebde3c62b8dbbe6055ef672818570f97e6e27a319de",
+        "mode": 493
+      },
+      ".bob/runtime/bob-v2/menu.sh": {
+        "sha256": "77d8317764c326bc1da7bf106e1c9e6891d1c3b2954bbb93cdb961c0b0ed3178",
+        "mode": 493
+      },
+      ".bob/runtime/bob-v2/load-env.sh": {
+        "sha256": "493d5537675d7baec86491099a7d68109c084ce6015e241fe41e862a64e1aaea",
+        "mode": 493
+      },
+      ".bob/runtime/bob-v2/auth-timeout.py": {
+        "sha256": "b4a18fa7a14dc3121bcb80fc0957b6e386c9788aa0bceeb7b99ad38319797355",
+        "mode": 493
+      },
+      "xLaunchpad.sh": {
+        "sha256": "647b690902f3285ea4f550a59f958834ce01d079b50b20940633266ca5de2c2f",
+        "mode": 493
+      },
+      ".bob/runtime/bob-v2/appliance.json": {
+        "sha256": "2fbfab0256e248b3852fcfce9dfe4cfb055fabc0fd9973caf1c73c3e1aeb637a",
+        "mode": 420
+      },
+      ".bob/BOB2-MODE-MAP.json": {
+        "sha256": "cd73a378adf89e4e70f0199defceaac98b5bd7ec139631045b2d7a0fe6474f41",
+        "mode": 420
+      },
+      ".bob/settings.json": {
+        "sha256": "dfec19b7fe758bdad77425b074c6983299e39b2c65a82aaa66b0643cab7ca213",
+        "mode": 420
+      }
+    },
+    "launcher_sha256": "677b7e659f6c6ef6560c993bded279d60724e78bcb516c4a2d3099e331cdf404"
+  },
+  "WMA": {
+    "folder": "websphere",
+    "stem": "websphere",
+    "mode_count": 11,
+    "expected": {
+      ".bob/custom_modes.yaml": "109b2b39fad69cb1c9dd5be1f613889862a9e3a3b5680c7bcac7a9b6a9ba4f71",
+      ".bob/runtime/bob-v2/runtime.py": "bde7e775bd5aa05f878cbc979c87460161f1169b7543fb5fc2bb3e35ba1f4ffa",
+      ".bob/runtime/bob-v2/production_display.py": "3e6852a709eef316869bd9d45d8a876ac6a2ac538ad8bde789cbd9d44718c5d1",
+      ".bob/hooks/bob2-context.py": "ed0f59d1a5e7842a19da9fe4e4050f813e7da5fcdee2d70018b59d61f91b5b67",
+      ".bob/BOB2-PRODUCTION-DISPLAY-PLAN.md": "4134bb34ec4ad0da9942c7a05302d1746d84ff41f69d8db8d824ffe07d630191",
+      ".bob/BOB2-RETRIEVAL-DISPLAY-POLICY.md": "98ce8180ab9da79284acc9305456589277e9d4ecc755bd88444e1ecbb53e70b1"
+    },
+    "preserved": {
+      "bob-auth.sh": {
+        "sha256": "83f2b0362d8f187c0bc543030bea4c9b85278027d0c7f293208d7dd72ca7256e",
+        "mode": 493
+      },
+      "tls-control.sh": {
+        "sha256": "ee7ca12efdd991b5030f3ebde3c62b8dbbe6055ef672818570f97e6e27a319de",
+        "mode": 493
+      },
+      ".bob/runtime/bob-v2/menu.sh": {
+        "sha256": "712ff8b910df0b5b131bb7f118d1ffc42e2e98d1ffcb04c0be9f61b88f16e60a",
+        "mode": 493
+      },
+      ".bob/runtime/bob-v2/load-env.sh": {
+        "sha256": "493d5537675d7baec86491099a7d68109c084ce6015e241fe41e862a64e1aaea",
+        "mode": 493
+      },
+      ".bob/runtime/bob-v2/auth-timeout.py": {
+        "sha256": "b4a18fa7a14dc3121bcb80fc0957b6e386c9788aa0bceeb7b99ad38319797355",
+        "mode": 493
+      },
+      "xLaunchpad.sh": {
+        "sha256": "647b690902f3285ea4f550a59f958834ce01d079b50b20940633266ca5de2c2f",
+        "mode": 493
+      },
+      ".bob/runtime/bob-v2/appliance.json": {
+        "sha256": "c3f8ef7bc4d9b2b75c2d6ed0311eb0499c1142d776e843195a4391e9144dde1a",
+        "mode": 420
+      },
+      ".bob/BOB2-MODE-MAP.json": {
+        "sha256": "462bfb68fc50684a2e0a69f4bb73699f014545c457574361ff80f9cf53b293eb",
+        "mode": 420
+      },
+      ".bob/settings.json": {
+        "sha256": "dfec19b7fe758bdad77425b074c6983299e39b2c65a82aaa66b0643cab7ca213",
+        "mode": 420
+      }
+    },
+    "launcher_sha256": "677b7e659f6c6ef6560c993bded279d60724e78bcb516c4a2d3099e331cdf404"
+  }
+}

@@ -1,0 +1,10 @@
+Patch: WXA-40
+Applied: 2026-08-05T14:27:19Z
+Appliance: IBM Bob watsonx Orchestrate Agent (WXA)
+Appliance root: /home/architect/IBM-SOFTWARE-LAB2/ibm-bob-operations/use-cases/watsonx-orchestrate
+Runtime helper: bob-filename-version-sync.sh
+Launcher marker: IBM-BOB-FILENAME-VERSION-SYNC-40
+Current Bob version at patch application: 1.0.6
+Behavior: On every xLaunchpad start, detect the installed Bob Shell version, store it in current_bob_version, export BOB_VERSION, and rename only older version-bearing regular filenames in the project root.
+Safety: No downgrade, no overwrite, no subdirectory scan, and .env excluded.
+Backup: /home/architect/IBM-SOFTWARE-LAB2/ibm-bob-operations/use-cases/watsonx-orchestrate/.bob/patch-backups/WXA-40

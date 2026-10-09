@@ -1,0 +1,20 @@
+{
+  "repair.py": "806af38074328a4f49ab359b6cb8a970964f56e8b8af292e007d041acb26b51d",
+  "patch-bob-usecases-v2x-45.sh": "49034c59012b45989de7af4ce066fa4a5e0bd9f9382a315a1822c1f768c298cf",
+  "baseline.json": "0646e1fbc6e16047dca018c69ede231869be301d7bed20cff100f4f379f2eb79",
+  "payload/QVC/custom_modes.yaml": "7da124928d3c2e2c13a21e67e0313211789e35b964934994a12b346f3216c68d",
+  "payload/RAA/custom_modes.yaml": "387a52fff3c811c26f34903eccb784e293eec5b387b541be4401b4acfb668856",
+  "payload/WMA/custom_modes.yaml": "0357553d9f5fb74616b52ba82836f1b9746a01a02f11aa3ffaefff2dba2e27c8",
+  "payload/common/retrieval-policy.md": "ff1c87d7eb8cc5fb624b0fa591d7a48abacb9dc5ee8eb8344e0240a50a7bd5b5",
+  "payload/common/bob2-context.py": "54cac19cdb8eb4c24bbc919e2a0c421ef6e08ecfdf68b6f283a594e4c0c13a8b",
+  "payload/common/terminal_style.py": "e8fc92ffe90259ab74c8f7b05ee2006e76a68c24c76d481cfe1207f0e49c4096",
+  "payload/common/display-pointer.md": "d7a8aebf49d13dda9012391011d21d7bc291ca30e359c44e90752b1530a804b3",
+  "payload/common/display-plan.md": "61a2637a02031bb3fb4273f959bcdc4392c00bcd3bd4cf7fd34370061d1223de",
+  "payload/common/discovery-policy.md": "f6fd45358234b657ce87a085de25542643ddd183db361b5fa87c937a92098746",
+  "payload/common/production_display.py": "2e63323c0cd3fbce5f0fdcf6c80b5e1454d0c0af06860e25101a30b07166c1af",
+  "payload/common/runtime.py": "057a0eb6123ee44ebd031d8978fbfe425d8d3a1a8d8b4325a68ff1607323ba4b",
+  "payload/WXA/custom_modes.yaml": "f49f1d122b6f2efcf5271cb27a8bd677941c160ce36b7d8bda53e96a513ed692",
+  "payload/ROA/custom_modes.yaml": "7a8b4098c1d415c94590d51d92a1269ae42d0d624425dcb5e432718bb17917ff",
+  "payload/SWA/custom_modes.yaml": "0a3ec9103a13cdc41c31dd04529441813df4484b72a2f7fdd58c42245e9db205",
+  "payload/TIA/custom_modes.yaml": "1066ce224429badad235621c1ab6bffa9df07193352aef42b866df66fa3ba2cf"
+}

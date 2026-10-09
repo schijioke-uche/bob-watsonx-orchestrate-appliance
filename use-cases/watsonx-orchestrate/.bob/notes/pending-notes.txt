@@ -1,0 +1,7 @@
+WXA pending notes:
+- Keep agents domain-specific.
+- Use ADK and wxo-adk-env for build/deployment work.
+- Never hardcode secrets in agent, tool, connection, or workflow artifacts.
+{"id":"eed28c6e-6348-4fcb-aee7-78699ebad376","ts":"2026-06-27T16:23:50.621Z","path":"/home/architect/IBM-SOFTWARE/ibm-bob-operations/use-cases/watsonx-orchestrate/bob-watsonx-orchestrate-designs/quantum-computing-agent-design.md","version":"1.0.0","taskID":"ffc6de7f-e7a7-41fd-8c57-3984c683240e"}
+{"id":"99611088-da9f-45db-8538-a77d1bf29154","ts":"2026-06-27T16:25:24.448Z","path":"/home/architect/IBM-SOFTWARE/ibm-bob-operations/use-cases/watsonx-orchestrate/bob-watsonx-orchestrate-store/quantum-agent-adk-config.yaml","version":"1.0.0","taskID":"ffc6de7f-e7a7-41fd-8c57-3984c683240e"}
+{"id":"8e663da0-f612-4c1a-85be-20ce0ba33d29","ts":"2026-06-27T16:26:49.526Z","path":"/home/architect/IBM-SOFTWARE/ibm-bob-operations/use-cases/watsonx-orchestrate/bob-watsonx-orchestrate-store/quantum-agent-implementation-guide.md","version":"1.0.0","taskID":"ffc6de7f-e7a7-41fd-8c57-3984c683240e"}

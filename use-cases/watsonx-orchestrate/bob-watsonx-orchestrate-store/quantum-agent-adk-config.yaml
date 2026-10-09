@@ -1,0 +1,849 @@
+# IBM watsonx Orchestrate ADK Configuration
+# Quantum Computing Expert Agent
+# Version: 1.0.0
+
+agent:
+  name: quantum-computing-expert
+  version: 1.0.0
+  display_name: "Quantum Computing Expert Agent"
+  description: "Multi-platform quantum computing assistant with expertise in quantum algorithms, circuit design, and execution across IBM Quantum, AWS Braket, and Azure Quantum"
+  
+  # Agent Configuration
+  config:
+    model:
+      provider: watsonx
+      model_id: ibm/granite-3-1-8b-instruct
+      parameters:
+        temperature: 0.3
+        max_tokens: 4096
+        top_p: 0.9
+        frequency_penalty: 0.3
+        presence_penalty: 0.2
+    
+    fallback_model:
+      provider: watsonx
+      model_id: meta-llama/llama-3-1-70b-instruct
+      parameters:
+        temperature: 0.3
+        max_tokens: 4096
+    
+    # System Instructions
+    instructions: |
+      You are an expert quantum computing assistant with comprehensive knowledge of quantum algorithms, 
+      quantum circuit design, and multi-platform quantum computing execution. Your expertise spans:
+
+      **Quantum Fundamentals:**
+      - Quantum mechanics principles (superposition, entanglement, interference)
+      - Quantum gates and circuit design
+      - Quantum measurement and state preparation
+      - Quantum error correction and mitigation
+
+      **Platform Expertise:**
+      - IBM Quantum (Qiskit): Circuit construction, transpilation, backend selection
+      - AWS Braket: Device management, hybrid algorithms, QPU access
+      - Azure Quantum: Q# programming, resource estimation
+
+      **Algorithm Development:**
+      - Variational algorithms (VQE, QAOA)
+      - Quantum machine learning
+      - Quantum optimization algorithms
+      - Quantum chemistry simulations
+
+      **Workflow Guidance:**
+      1. Understand user requirements and problem domain
+      2. Recommend appropriate quantum algorithm and platform
+      3. Design quantum circuits with optimization
+      4. Simulate circuits for validation
+      5. Execute on real quantum hardware when appropriate (with approval)
+      6. Analyze results and provide insights
+
+      **Safety and Governance:**
+      - Require human approval for quantum hardware execution (cost implications)
+      - Validate circuit complexity before submission
+      - Never hardcode API keys or credentials
+      - Implement timeout controls for long-running jobs
+      - Log all quantum executions for audit trails
+
+# Tools Configuration
+tools:
+  # IBM Quantum Tools
+  - name: qiskit_circuit_builder
+    type: python_function
+    module: quantum_tools.ibm_quantum
+    function: build_circuit
+    description: "Design and construct quantum circuits using Qiskit"
+    parameters:
+      algorithm_type:
+        type: string
+        enum: [VQE, QAOA, Grover, Shor, Custom]
+        required: true
+      num_qubits:
+        type: integer
+        minimum: 1
+        maximum: 127
+        required: true
+      circuit_definition:
+        type: object
+        required: true
+      optimization_level:
+        type: integer
+        minimum: 0
+        maximum: 3
+        default: 2
+    human_approval: false
+
+  - name: qiskit_simulator
+    type: python_function
+    module: quantum_tools.ibm_quantum
+    function: simulate_circuit
+    description: "Simulate quantum circuits locally"
+    parameters:
+      circuit:
+        type: object
+        required: true
+      shots:
+        type: integer
+        default: 1024
+        minimum: 1
+        maximum: 100000
+      noise_model:
+        type: object
+        required: false
+      backend:
+        type: string
+        enum: [aer_simulator, statevector_simulator, unitary_simulator]
+        default: aer_simulator
+    human_approval: false
+
+  - name: qiskit_hardware_executor
+    type: python_function
+    module: quantum_tools.ibm_quantum
+    function: execute_on_hardware
+    description: "Execute circuits on real IBM Quantum hardware"
+    parameters:
+      circuit:
+        type: object
+        required: true
+      backend_name:
+        type: string
+        required: true
+      shots:
+        type: integer
+        default: 1024
+      optimization_level:
+        type: integer
+        default: 2
+    human_approval: true
+    approval_message: "This will execute on real quantum hardware. Estimated cost: ${cost_estimate}. Backend: ${backend_name}. Shots: ${shots}. Approve?"
+
+  - name: qiskit_backend_selector
+    type: python_function
+    module: quantum_tools.ibm_quantum
+    function: select_backend
+    description: "Select optimal IBM Quantum backend"
+    parameters:
+      num_qubits:
+        type: integer
+        required: true
+      criteria:
+        type: string
+        enum: [least_busy, highest_fidelity, lowest_error_rate]
+        default: least_busy
+      filter_operational:
+        type: boolean
+        default: true
+    human_approval: false
+
+  # AWS Braket Tools
+  - name: braket_circuit_builder
+    type: python_function
+    module: quantum_tools.aws_braket
+    function: build_circuit
+    description: "Design quantum circuits for AWS Braket"
+    parameters:
+      algorithm_type:
+        type: string
+        required: true
+      num_qubits:
+        type: integer
+        required: true
+      circuit_definition:
+        type: object
+        required: true
+      device_type:
+        type: string
+        enum: [simulator, ionq, rigetti, oqc]
+        default: simulator
+    human_approval: false
+
+  - name: braket_simulator
+    type: python_function
+    module: quantum_tools.aws_braket
+    function: simulate_circuit
+    description: "Execute circuits on AWS Braket simulators"
+    parameters:
+      circuit:
+        type: object
+        required: true
+      shots:
+        type: integer
+        default: 1024
+      simulator_type:
+        type: string
+        enum: [SV1, TN1, DM1]
+        default: SV1
+    human_approval: false
+
+  - name: braket_qpu_executor
+    type: python_function
+    module: quantum_tools.aws_braket
+    function: execute_on_qpu
+    description: "Execute on AWS Braket quantum hardware"
+    parameters:
+      circuit:
+        type: object
+        required: true
+      device_arn:
+        type: string
+        required: true
+      shots:
+        type: integer
+        default: 1024
+      s3_bucket:
+        type: string
+        required: true
+    human_approval: true
+    approval_message: "This will execute on AWS Braket QPU. Estimated cost: ${cost_estimate}. Device: ${device_arn}. Approve?"
+
+  # Azure Quantum Tools
+  - name: azure_qsharp_compiler
+    type: python_function
+    module: quantum_tools.azure_quantum
+    function: compile_qsharp
+    description: "Compile Q# quantum programs"
+    parameters:
+      qsharp_code:
+        type: string
+        required: true
+      entry_point:
+        type: string
+        required: true
+      target_profile:
+        type: string
+        enum: [Full, Base, Adaptive_RI]
+        default: Full
+    human_approval: false
+
+  - name: azure_quantum_simulator
+    type: python_function
+    module: quantum_tools.azure_quantum
+    function: simulate_program
+    description: "Simulate Q# programs on Azure"
+    parameters:
+      program:
+        type: object
+        required: true
+      simulator_type:
+        type: string
+        enum: [full_state, sparse, noise]
+        default: full_state
+      shots:
+        type: integer
+        default: 1024
+    human_approval: false
+
+  - name: azure_quantum_executor
+    type: python_function
+    module: quantum_tools.azure_quantum
+    function: execute_on_hardware
+    description: "Execute on Azure Quantum hardware"
+    parameters:
+      program:
+        type: object
+        required: true
+      target:
+        type: string
+        enum: [ionq, quantinuum, rigetti]
+        required: true
+      workspace:
+        type: string
+        required: true
+      shots:
+        type: integer
+        default: 1024
+    human_approval: true
+    approval_message: "This will execute on Azure Quantum hardware. Estimated cost: ${cost_estimate}. Target: ${target}. Approve?"
+
+  # Cross-Platform Tools
+  - name: quantum_circuit_translator
+    type: python_function
+    module: quantum_tools.cross_platform
+    function: translate_circuit
+    description: "Translate circuits between platforms"
+    parameters:
+      source_circuit:
+        type: object
+        required: true
+      source_platform:
+        type: string
+        enum: [qiskit, braket, qsharp]
+        required: true
+      target_platform:
+        type: string
+        enum: [qiskit, braket, qsharp]
+        required: true
+      optimization:
+        type: boolean
+        default: true
+    human_approval: false
+
+  - name: quantum_algorithm_optimizer
+    type: python_function
+    module: quantum_tools.cross_platform
+    function: optimize_algorithm
+    description: "Optimize quantum algorithms for target platform"
+    parameters:
+      circuit:
+        type: object
+        required: true
+      platform:
+        type: string
+        required: true
+      optimization_goals:
+        type: array
+        items:
+          type: string
+          enum: [depth, gate_count, fidelity]
+      constraints:
+        type: object
+    human_approval: false
+
+  - name: quantum_noise_analyzer
+    type: python_function
+    module: quantum_tools.cross_platform
+    function: analyze_noise
+    description: "Analyze and model quantum noise"
+    parameters:
+      backend:
+        type: string
+        required: true
+      circuit:
+        type: object
+        required: true
+      noise_model_type:
+        type: string
+        enum: [depolarizing, thermal, readout]
+        default: depolarizing
+    human_approval: false
+
+  - name: quantum_job_monitor
+    type: python_function
+    module: quantum_tools.cross_platform
+    function: monitor_job
+    description: "Monitor quantum job execution"
+    parameters:
+      job_id:
+        type: string
+        required: true
+      platform:
+        type: string
+        enum: [qiskit, braket, azure]
+        required: true
+      poll_interval:
+        type: integer
+        default: 10
+        minimum: 5
+    human_approval: false
+
+  - name: quantum_result_visualizer
+    type: python_function
+    module: quantum_tools.visualization
+    function: visualize_results
+    description: "Visualize quantum computation results"
+    parameters:
+      results:
+        type: object
+        required: true
+      visualization_type:
+        type: string
+        enum: [histogram, bloch_sphere, state_city, circuit]
+        required: true
+      format:
+        type: string
+        enum: [png, svg, interactive]
+        default: png
+    human_approval: false
+
+  - name: quantum_cost_estimator
+    type: python_function
+    module: quantum_tools.cost
+    function: estimate_cost
+    description: "Estimate costs for quantum executions"
+    parameters:
+      platform:
+        type: string
+        enum: [qiskit, braket, azure]
+        required: true
+      device:
+        type: string
+        required: true
+      shots:
+        type: integer
+        required: true
+      circuit_complexity:
+        type: object
+        required: true
+    human_approval: false
+
+# Workflows Configuration
+workflows:
+  - name: quantum_algorithm_development
+    description: "End-to-end quantum algorithm development workflow"
+    trigger: "User requests quantum algorithm design or implementation"
+    steps:
+      - name: requirement_analysis
+        description: "Understand problem domain and constraints"
+        actions:
+          - analyze_requirements
+          - identify_quantum_advantage
+          - determine_qubit_requirements
+      
+      - name: algorithm_selection
+        description: "Recommend appropriate quantum algorithm"
+        actions:
+          - recommend_algorithm
+          - explain_principles
+          - provide_complexity_analysis
+      
+      - name: circuit_design
+        description: "Design quantum circuit"
+        tools:
+          - qiskit_circuit_builder
+          - braket_circuit_builder
+          - azure_qsharp_compiler
+        actions:
+          - design_circuit
+          - optimize_circuit
+          - validate_structure
+      
+      - name: simulation
+        description: "Execute circuit on simulator"
+        tools:
+          - qiskit_simulator
+          - braket_simulator
+          - azure_quantum_simulator
+        actions:
+          - execute_simulation
+          - analyze_results
+          - iterate_if_needed
+      
+      - name: hardware_preparation
+        description: "Prepare for hardware execution"
+        tools:
+          - qiskit_backend_selector
+          - quantum_cost_estimator
+        actions:
+          - select_backend
+          - estimate_cost
+          - request_approval
+        human_approval: true
+      
+      - name: execution_and_analysis
+        description: "Execute on quantum hardware and analyze"
+        tools:
+          - qiskit_hardware_executor
+          - braket_qpu_executor
+          - azure_quantum_executor
+          - quantum_result_visualizer
+        actions:
+          - execute_on_hardware
+          - collect_results
+          - analyze_results
+          - provide_insights
+
+  - name: multi_platform_optimization
+    description: "Optimize quantum workload across platforms"
+    trigger: "User needs to optimize quantum workload"
+    steps:
+      - name: platform_assessment
+        tools:
+          - qiskit_backend_selector
+        actions:
+          - analyze_requirements
+          - evaluate_platforms
+          - compare_capabilities
+      
+      - name: circuit_translation
+        tools:
+          - quantum_circuit_translator
+        actions:
+          - translate_to_platforms
+          - validate_translation
+          - optimize_per_platform
+      
+      - name: benchmarking
+        tools:
+          - qiskit_simulator
+          - braket_simulator
+          - azure_quantum_simulator
+        actions:
+          - simulate_all_platforms
+          - compare_performance
+          - analyze_tradeoffs
+      
+      - name: recommendation
+        tools:
+          - quantum_cost_estimator
+        actions:
+          - recommend_platform
+          - provide_comparison_report
+          - explain_rationale
+      
+      - name: execution
+        human_approval: true
+        actions:
+          - execute_on_recommended_platform
+          - monitor_progress
+          - deliver_results
+
+  - name: quantum_error_mitigation
+    description: "Improve quantum computation fidelity"
+    trigger: "User needs to improve computation fidelity"
+    steps:
+      - name: noise_characterization
+        tools:
+          - quantum_noise_analyzer
+        actions:
+          - analyze_device_noise
+          - build_noise_model
+          - identify_error_sources
+      
+      - name: mitigation_strategy_selection
+        actions:
+          - recommend_mitigation_techniques
+          - explain_tradeoffs
+      
+      - name: implementation
+        actions:
+          - implement_mitigation
+          - modify_circuit
+          - validate_effectiveness
+      
+      - name: comparative_analysis
+        tools:
+          - qiskit_simulator
+        actions:
+          - execute_with_without_mitigation
+          - compare_fidelity
+          - quantify_improvement
+      
+      - name: optimization
+        actions:
+          - fine_tune_parameters
+          - balance_accuracy_overhead
+          - provide_final_solution
+
+# Knowledge Bases Configuration
+knowledge_bases:
+  - name: quantum_fundamentals_kb
+    type: document_collection
+    description: "Quantum computing fundamentals and theory"
+    sources:
+      - quantum_mechanics_principles
+      - quantum_gates_circuits
+      - quantum_algorithms_textbook
+      - quantum_error_correction
+      - nisq_device_characteristics
+    indexing:
+      strategy: vector_embeddings
+      embedding_model: watsonx/slate-125m-english-rtrvr
+    update_frequency: quarterly
+    
+  - name: quantum_platforms_kb
+    type: api_documentation
+    description: "Platform-specific documentation"
+    sources:
+      - ibm_qiskit_docs
+      - aws_braket_docs
+      - azure_quantum_docs
+      - platform_best_practices
+      - device_specifications
+    indexing:
+      strategy: hierarchical
+      tags: [platform, api, device]
+    update_frequency: monthly
+    
+  - name: quantum_algorithms_kb
+    type: code_repository
+    description: "Quantum algorithms library"
+    sources:
+      - variational_algorithms
+      - quantum_ml_algorithms
+      - optimization_algorithms
+      - quantum_chemistry_algorithms
+      - search_factoring_algorithms
+    indexing:
+      strategy: algorithm_taxonomy
+      metadata: [complexity, qubits, depth]
+    update_frequency: continuous
+    
+  - name: quantum_hardware_kb
+    type: device_database
+    description: "Quantum hardware specifications"
+    sources:
+      - ibm_quantum_backends
+      - aws_braket_devices
+      - azure_quantum_providers
+      - calibration_data
+      - error_rates
+    indexing:
+      strategy: device_centric
+      real_time_status: true
+    update_frequency: daily
+    
+  - name: quantum_research_kb
+    type: academic_literature
+    description: "Research papers and publications"
+    sources:
+      - arxiv_quantum_papers
+      - nature_science_publications
+      - conference_proceedings
+      - industry_research_reports
+    indexing:
+      strategy: citation_based
+      clustering: topic_based
+    update_frequency: weekly
+
+# Connections Configuration
+connections:
+  - name: ibm_quantum_connection
+    type: rest_api
+    provider: ibm_quantum
+    authentication:
+      method: api_token
+      token_source: environment
+      variable_name: IBM_QUANTUM_TOKEN
+    endpoints:
+      base_url: https://api.quantum-computing.ibm.com/
+    sdk:
+      package: qiskit-ibm-runtime
+      version: ">=0.20.0"
+    rate_limits:
+      jobs_per_minute: 10
+      concurrent_jobs: 5
+    retry_policy:
+      max_retries: 3
+      backoff_factor: 2
+    security:
+      tls_version: "1.3"
+      certificate_validation: true
+      
+  - name: aws_braket_connection
+    type: aws_sdk
+    provider: aws_braket
+    authentication:
+      method: iam_role
+      role_arn_source: environment
+      variable_name: AWS_BRAKET_ROLE_ARN
+    sdk:
+      package: amazon-braket-sdk
+      version: ">=1.70.0"
+    s3_config:
+      bucket_source: environment
+      variable_name: BRAKET_S3_BUCKET
+      prefix: quantum-results/
+    rate_limits:
+      tasks_per_minute: 20
+      concurrent_tasks: 10
+    security:
+      encryption: AES256
+      
+  - name: azure_quantum_connection
+    type: azure_sdk
+    provider: azure_quantum
+    authentication:
+      method: azure_ad
+      tenant_id_source: environment
+      variable_name: AZURE_TENANT_ID
+      client_id_source: environment
+      variable_name: AZURE_CLIENT_ID
+      client_secret_source: environment
+      variable_name: AZURE_CLIENT_SECRET
+    sdk:
+      package: azure-quantum
+      version: ">=0.28.0"
+    workspace:
+      resource_group_source: environment
+      variable_name: AZURE_RESOURCE_GROUP
+      workspace_name_source: environment
+      variable_name: AZURE_QUANTUM_WORKSPACE
+    rate_limits:
+      jobs_per_minute: 15
+      concurrent_jobs: 8
+
+# Deployment Configuration
+deployment:
+  environments:
+    - name: development
+      replicas: 1
+      resources:
+        cpu: 2
+        memory: 4Gi
+      quantum_platforms:
+        ibm_quantum:
+          tier: free
+          max_jobs: 5
+        aws_braket:
+          tier: simulator_only
+        azure_quantum:
+          tier: free
+      logging_level: DEBUG
+      
+    - name: staging
+      replicas: 2
+      resources:
+        cpu: 4
+        memory: 8Gi
+      quantum_platforms:
+        ibm_quantum:
+          tier: pay_as_you_go
+          max_jobs: 20
+        aws_braket:
+          tier: full_access
+        azure_quantum:
+          tier: standard
+      logging_level: INFO
+      monitoring: enhanced
+      
+    - name: production
+      replicas: 5
+      resources:
+        cpu: 8
+        memory: 16Gi
+      quantum_platforms:
+        ibm_quantum:
+          tier: premium
+          max_jobs: 100
+        aws_braket:
+          tier: enterprise
+        azure_quantum:
+          tier: premium
+      logging_level: WARN
+      monitoring: comprehensive
+      auto_scaling:
+        min_replicas: 3
+        max_replicas: 10
+        target_cpu: 70
+      high_availability:
+        zones: 3
+        failover: automatic
+
+# Monitoring and Observability
+observability:
+  logging:
+    provider: ibm_log_analysis
+    format: json
+    retention:
+      development: 7d
+      staging: 30d
+      production: 90d
+    categories:
+      - user_interactions
+      - tool_executions
+      - quantum_jobs
+      - platform_connections
+      - performance
+      - security
+      
+  monitoring:
+    provider: ibm_cloud_monitoring
+    metrics:
+      - request_rate
+      - response_time
+      - error_rate
+      - tool_success_rate
+      - quantum_job_rate
+      - resource_usage
+    dashboards:
+      - agent_health
+      - quantum_operations
+      - user_experience
+      - security_compliance
+      
+  tracing:
+    provider: opentelemetry
+    exporter: jaeger
+    sample_rate: 1.0
+    
+  alerting:
+    channels:
+      - type: pagerduty
+        severity: critical
+      - type: slack
+        severity: warning
+      - type: email
+        severity: info
+    rules:
+      - name: high_error_rate
+        condition: error_rate > 5%
+        severity: critical
+        window: 5m
+      - name: slow_response
+        condition: p95_response_time > 30s
+        severity: critical
+        window: 5m
+      - name: tool_failures
+        condition: tool_failure_rate > 10%
+        severity: critical
+        window: 5m
+
+# Governance and Compliance
+governance:
+  security:
+    authentication: mfa_required
+    authorization: rbac
+    credential_rotation: 90d
+    encryption:
+      at_rest: AES256
+      in_transit: TLS13
+      
+  compliance:
+    standards:
+      - GDPR
+      - SOC2_TYPE_II
+      - ISO27001
+    audit_logging: enabled
+    audit_retention: 1y
+    
+  cost_management:
+    budget_alerts: enabled
+    cost_tracking: per_environment
+    optimization: enabled
+    
+  change_management:
+    approval_required: true
+    rollback_capability: true
+    validation_required: true
+    
+  incident_response:
+    on_call: 24x7
+    sla:
+      critical: 15m
+      high: 1h
+      medium: 4h
+      low: 24h
+
+# Metadata
+metadata:
+  version: 1.0.0
+  created_date: "2026-06-27"
+  created_by: "WXO Agent Architect"
+  last_updated: "2026-06-27"
+  status: design_phase
+  tags:
+    - quantum_computing
+    - multi_platform
+    - ibm_quantum
+    - aws_braket
+    - azure_quantum
+    - adk
