@@ -35,12 +35,13 @@ The **WXA appliance** is an IBM Bob–powered agent specialized for **IBM watson
 
 ## Getting Started
 
-### Step 1 — Clone / Open the Project
+### Step 1 — Clone the Repository
 
-Open the `use-cases/watsonx-orchestrate/` directory in your terminal or IDE (e.g., VS Code with the IBM Bob extension).
+The `main` branch is the only available branch.
 
 ```bash
-cd use-cases/watsonx-orchestrate
+git clone https://github.com/IBM/bob-watsonx-orchestrate-appliance.git
+cd bob-watsonx-orchestrate-appliance/use-cases/watsonx-orchestrate
 ```
 
 ### Step 2 — Configure Your Environment
