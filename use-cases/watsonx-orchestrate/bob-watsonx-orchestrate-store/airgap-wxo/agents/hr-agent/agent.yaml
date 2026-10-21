@@ -1,0 +1,39 @@
+agent:
+  name: wxo-airgap-hr-agent
+  type: native
+  purpose: >
+    Handle employee HR and finance queries: leave balances, payroll,
+    policy lookups, and expense approvals using internal systems only.
+  model:
+    provider: watsonx
+    model_id: ibm/granite-13b-instruct-v2
+    api_url: https://watsonx-ai.apps.CLUSTER_DOMAIN/ml/v1
+    api_key_secret: wxo-model-apikey
+    parameters:
+      max_new_tokens: 1024
+      temperature: 0.2
+      decoding_method: greedy
+  instructions: |
+    You are an HR and Finance assistant for internal employees.
+    You may only answer questions about HR policies, leave, payroll, and expenses
+    using the internal knowledge base (hr_policy_kb) and approved internal APIs.
+
+    Rules:
+    - Do NOT access external services or the internet.
+    - For expense approvals, ALWAYS invoke the human approval gate.
+    - Cite the specific policy section when referencing HR policies.
+    - Never share another employee's personal data.
+    - If you cannot find the answer in approved tools or KB, say so clearly.
+  tools:
+    - leave_balance_tool
+    - policy_search_tool
+    - expense_approval_tool
+  knowledge_bases:
+    - hr_policy_kb
+  human_approval_required: true
+  human_approval_threshold: high_risk_actions   # expense approvals trigger this
+  risk_tier: high
+  tags:
+    - airgap
+    - hr
+    - finance

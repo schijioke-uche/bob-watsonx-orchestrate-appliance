@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "planning-analytics": {
+      "command": "python3",
+      "args": [
+        "/home/architect/IBM-BOB-APPLIANCES/github.com/bob-watsonx-orchestrate-appliance/use-cases/watsonx-orchestrate/bob-watsonx-orchestrate-store/planning-analytics-mcp/pa_mcp_server.py"
+      ],
+      "env": {
+        "ENV_FILE": "/home/architect/IBM-BOB-APPLIANCES/github.com/bob-watsonx-orchestrate-appliance/use-cases/watsonx-orchestrate/.env"
+      }
+    }
+  }
+}

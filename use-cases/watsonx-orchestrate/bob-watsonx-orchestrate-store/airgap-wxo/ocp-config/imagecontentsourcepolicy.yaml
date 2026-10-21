@@ -1,0 +1,42 @@
+apiVersion: operator.openshift.io/v1alpha1
+kind: ImageContentSourcePolicy
+metadata:
+  name: ibm-wxo-airgap
+  annotations:
+    description: >
+      Mirrors IBM container image sources to the customer private registry.
+      Apply after OCP install, before Software Hub operator deployment.
+      Replace PRIVATE_REGISTRY_HOST with the actual internal registry FQDN.
+spec:
+  repositoryDigestMirrors:
+    # IBM Cloud container registry — operator catalogs
+    - source: icr.io/cpopen
+      mirrors:
+        - PRIVATE_REGISTRY_HOST/cpopen
+    # IBM entitled registry — product images
+    - source: cp.icr.io/cp
+      mirrors:
+        - PRIVATE_REGISTRY_HOST/cp
+    # watsonx Orchestrate specific images
+    - source: icr.io/ibm-watsonx-orchestrate
+      mirrors:
+        - PRIVATE_REGISTRY_HOST/ibm-watsonx-orchestrate
+    # watsonx.ai Runtime images
+    - source: icr.io/ibm-watsonx-ai
+      mirrors:
+        - PRIVATE_REGISTRY_HOST/ibm-watsonx-ai
+    # watsonx.governance images
+    - source: icr.io/ibm-watsonx-governance
+      mirrors:
+        - PRIVATE_REGISTRY_HOST/ibm-watsonx-governance
+    # IBM Software Hub (CPD platform) images
+    - source: icr.io/cpd-platform
+      mirrors:
+        - PRIVATE_REGISTRY_HOST/cpd-platform
+    # Red Hat operator catalog (for OCP operators)
+    - source: registry.redhat.io
+      mirrors:
+        - PRIVATE_REGISTRY_HOST/redhat
+    - source: registry.access.redhat.com
+      mirrors:
+        - PRIVATE_REGISTRY_HOST/redhat-access

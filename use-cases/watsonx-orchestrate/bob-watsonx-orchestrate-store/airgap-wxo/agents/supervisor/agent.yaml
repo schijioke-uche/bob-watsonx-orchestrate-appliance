@@ -1,0 +1,42 @@
+agent:
+  name: wxo-airgap-supervisor
+  type: native
+  purpose: >
+    Route user requests to the correct domain agent. Handles intent
+    classification without calling external LLM APIs.
+  model:
+    provider: watsonx
+    model_id: ibm/granite-13b-instruct-v2
+    # Replace with actual internal cluster domain
+    api_url: https://watsonx-ai.apps.CLUSTER_DOMAIN/ml/v1
+    api_key_secret: wxo-model-apikey    # injected by Vault sidecar
+    parameters:
+      max_new_tokens: 512
+      temperature: 0.1
+      decoding_method: greedy
+  instructions: |
+    You are the routing supervisor for internal enterprise agents deployed
+    in a disconnected (air-gap) environment. Your sole task is to classify
+    the user's intent and delegate to the most appropriate domain agent.
+
+    Available collaborators:
+    - wxo-airgap-hr-agent: HR policies, leave balances, payroll, expense approvals
+    - wxo-airgap-ops-agent: ERP, inventory, order status, operational data
+
+    Rules:
+    - Never call external internet APIs.
+    - If the intent is ambiguous, ask one clarifying question.
+    - Respond in the same language as the user.
+    - For requests outside the scope of any collaborator, politely refuse.
+  collaborators:
+    - wxo-airgap-hr-agent
+    - wxo-airgap-ops-agent
+  channels:
+    - ms_teams_internal
+    - web_chat_internal
+  human_approval_required: false
+  risk_tier: medium
+  tags:
+    - airgap
+    - supervisor
+    - production
