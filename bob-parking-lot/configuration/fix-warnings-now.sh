@@ -7,6 +7,8 @@ echo "Fixing Bob CLI Warnings"
 echo "==================================="
 echo ""
 
+LOADER_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)/../load-env.sh"
+
 # Get current directory
 CURRENT_DIR="$(pwd)"
 BOB_LINUX_DIR="$CURRENT_DIR/Bob-Linux"
@@ -31,7 +33,8 @@ cat > "$HOME/.local/bin/bob" <<'WRAPPER'
 # Bob CLI wrapper - suppresses warnings
 
 export NODE_NO_WARNINGS=1
-export BOB_API_KEY="YOUR_BOB_API_KEY_HERE"
+# API key comes from the project .env (path injected at install time)
+source "__LOADER_PATH__"
 export NODE_TLS_REJECT_UNAUTHORIZED=0
 
 # Get the real bob path
@@ -44,6 +47,7 @@ fi
 # Run real bob and suppress warnings
 "$REAL_BOB" "$@" 2>&1 | grep -v "DeprecationWarning" | grep -v "Setting NODE_TLS_REJECT_UNAUTHORIZED" | grep -v "Failed to get current commit"
 WRAPPER
+sed -i "s|__LOADER_PATH__|$LOADER_PATH|" "$HOME/.local/bin/bob"
 
 chmod +x "$HOME/.local/bin/bob"
 

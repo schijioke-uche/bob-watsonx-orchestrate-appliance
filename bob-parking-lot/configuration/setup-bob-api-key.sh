@@ -16,6 +16,10 @@ YELLOW='\033[1;33m'
 RED='\033[0;31m'
 NC='\033[0m'
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
+LOADER_PATH="$SCRIPT_DIR/../load-env.sh"
+source "$LOADER_PATH"   # reads BOB_API_KEY from the project .env if present
+
 BOB_DIR="$HOME/.bob"
 CONFIG_FILE="$BOB_DIR/config.json"
 ENV_FILE="$BOB_DIR/.env"
@@ -34,8 +38,12 @@ echo ""
 echo -e "${YELLOW}Note: This is different from IBM Cloud API Key${NC}"
 echo ""
 
-read -p "Enter your Bob API Key: " -s BOB_API_KEY
-echo ""
+if [ -z "${BOB_API_KEY:-}" ]; then
+    read -p "BOB_API_KEY not found in the project .env. Enter your Bob API Key: " -s BOB_API_KEY
+    echo ""
+else
+    echo "Using BOB_API_KEY from the project .env"
+fi
 
 if [ -z "$BOB_API_KEY" ]; then
     echo -e "${RED}Error: API Key cannot be empty${NC}"
@@ -108,7 +116,7 @@ echo "  source ~/.bob/export-env.sh"
 echo "  bob"
 echo ""
 echo "Option 2: Set environment variable directly"
-echo "  export BOB_API_KEY='$BOB_API_KEY'"
+echo "  source $LOADER_PATH   # loads BOB_API_KEY from the project .env"
 echo "  bob"
 echo ""
 echo "Option 3: Use the wrapper script (see below)"

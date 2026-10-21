@@ -11,7 +11,14 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
-BOB_API_KEY="YOUR_BOB_API_KEY_HERE"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
+LOADER_PATH="$SCRIPT_DIR/../load-env.sh"
+# Credentials are read from the project .env - never hardcode them here.
+source "$LOADER_PATH"
+if [ -z "${BOB_API_KEY:-}" ]; then
+    echo "Error: BOB_API_KEY is not set. Add it to the project .env (use-cases/<project>/.env) or set BOB_ENV_FILE." >&2
+    exit 1
+fi
 BOB_DIR="$HOME/.bob"
 
 echo "Configuring Bob CLI for non-interactive mode..."
@@ -97,7 +104,7 @@ echo "==================================="
 echo "Configuration Complete!"
 echo "==================================="
 echo ""
-echo "Your Bob API Key: YOUR_BOB_API_KEY_HERE"
+echo "Bob API Key: loaded from the project .env (${BOB_API_KEY:0:3}***)"
 echo ""
 echo "To use Bob CLI in non-interactive mode:"
 echo ""
@@ -108,8 +115,8 @@ echo ""
 echo "Option 2: Use wrapper script"
 echo "  ~/.bob/bob-cli.sh 'your task here'"
 echo ""
-echo "Option 3: Set variable inline"
-echo "  BOB_API_KEY=YOUR_BOB_API_KEY_HERE bob 'your task here'"
+echo "Option 3: Load the key from the project .env"
+echo "  source $LOADER_PATH && bob 'your task here'"
 echo ""
 echo "Option 4: Reload shell (to apply profile changes)"
 echo "  source ~/.bashrc  # or source ~/.zshrc"

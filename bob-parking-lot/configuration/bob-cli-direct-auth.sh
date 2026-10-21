@@ -18,7 +18,11 @@ RED='\033[0;31m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
-BOB_API_KEY="YOUR_BOB_API_KEY_HERE"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
+LOADER_PATH="$SCRIPT_DIR/../load-env.sh"
+# Credentials are read from the project .env - never hardcode them here.
+source "$LOADER_PATH"
+: "${BOB_API_KEY:?BOB_API_KEY is not set. Add it to the project .env (use-cases/<project>/.env) or set BOB_ENV_FILE.}"
 BOB_DIR="$HOME/.bob"
 BOB_API_ENDPOINT="https://api.us-east.bob.ibm.com"
 
@@ -149,7 +153,8 @@ cat > "$BOB_DIR/auth-wrapper.sh" <<'WRAPPER'
 # Bob CLI Authentication Wrapper
 # This bypasses OAuth and uses API key directly
 
-BOB_API_KEY="YOUR_BOB_API_KEY_HERE"
+# Load the API key from the project .env (path injected at install time)
+source "__LOADER_PATH__"
 
 # Export API key
 export BOB_API_KEY
@@ -165,6 +170,7 @@ else
 fi
 WRAPPER
 
+sed -i "s|__LOADER_PATH__|$LOADER_PATH|" "$BOB_DIR/auth-wrapper.sh"
 chmod +x "$BOB_DIR/auth-wrapper.sh"
 
 echo -e "${GREEN}✓ Created authentication wrapper${NC}"
@@ -181,12 +187,12 @@ echo "Option 1: Use the wrapper script"
 echo "  ~/.bob/auth-wrapper.sh 'your task here'"
 echo ""
 echo "Option 2: Set environment and use bob"
-echo "  export BOB_API_KEY=YOUR_BOB_API_KEY_HERE"
+echo "  source $LOADER_PATH   # loads BOB_API_KEY from the project .env"
 echo "  export NODE_TLS_REJECT_UNAUTHORIZED=0"
 echo "  bob 'your task here'"
 echo ""
 echo "Option 3: Create an alias"
-echo "  alias bob-cli='BOB_API_KEY=YOUR_BOB_API_KEY_HERE bob'"
+echo "  alias bob-cli='source $LOADER_PATH && bob'"
 echo "  bob-cli 'your task here'"
 echo ""
 echo -e "${YELLOW}Note: If Bob still tries to open browser, it means the CLI${NC}"

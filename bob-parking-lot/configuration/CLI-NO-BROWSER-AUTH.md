@@ -44,7 +44,8 @@ chmod +x bob-no-browser.sh
 Set these environment variables to prevent browser opening:
 
 ```bash
-export BOB_API_KEY="YOUR_BOB_API_KEY_HERE"
+# BOB_API_KEY is read from the project .env (use-cases/<project>/.env) - never hardcode it
+source ../load-env.sh
 export NODE_TLS_REJECT_UNAUTHORIZED=0
 export BOB_NO_BROWSER=1
 export BOB_AUTH_METHOD="apikey"
@@ -60,7 +61,7 @@ Add to your `~/.bashrc` or `~/.zshrc`:
 
 ```bash
 # Bob CLI without browser
-alias bob-cli='BOB_API_KEY=YOUR_BOB_API_KEY_HERE BOB_NO_BROWSER=1 BROWSER=none bob'
+alias bob-cli='source /path/to/bob-parking-lot/load-env.sh && BOB_NO_BROWSER=1 BROWSER=none bob'
 ```
 
 Then use:
@@ -74,7 +75,7 @@ Create `~/.bob/config.json`:
 
 ```json
 {
-  "apiKey": "YOUR_BOB_API_KEY_HERE",
+  "apiKey": "<value of BOB_API_KEY from the project .env>",
   "apiEndpoint": "https://api.us-east.bob.ibm.com",
   "authMethod": "apikey",
   "noBrowser": true,
@@ -100,7 +101,8 @@ Create a script that calls Bob API directly without using the CLI:
 #!/usr/bin/env bash
 # direct-bob-api.sh
 
-API_KEY="YOUR_BOB_API_KEY_HERE"
+source ../load-env.sh
+API_KEY="${BOB_API_KEY:?Set BOB_API_KEY in the project .env}"
 MESSAGE="$1"
 MODE="${2:-code}"
 
@@ -228,7 +230,7 @@ npm install -g bobshell
 
 | Variable | Purpose | Value |
 |----------|---------|-------|
-| `BOB_API_KEY` | Your API key | `YOUR_BOB_API_KEY_HERE` |
+| `BOB_API_KEY` | Your API key | from the project `.env` |
 | `BOB_NO_BROWSER` | Disable browser | `1` |
 | `BOB_AUTH_METHOD` | Auth method | `apikey` |
 | `BROWSER` | Browser command | `none` |
@@ -245,7 +247,7 @@ npm install -g bobshell
 ./bob-cli-direct-auth.sh
 
 # Add alias to bashrc
-echo 'alias bob-cli="BOB_API_KEY=YOUR_BOB_API_KEY_HERE BOB_NO_BROWSER=1 BROWSER=none bob"' >> ~/.bashrc
+echo 'alias bob-cli="source /path/to/bob-parking-lot/load-env.sh && BOB_NO_BROWSER=1 BROWSER=none bob"' >> ~/.bashrc
 
 # Reload shell
 source ~/.bashrc

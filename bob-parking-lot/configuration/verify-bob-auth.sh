@@ -14,6 +14,10 @@ YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m'
 
+# Project .env (git-ignored) is the single source of the API key
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
+source "$SCRIPT_DIR/../load-env.sh"
+
 # Check if Bob is installed
 echo -e "${BLUE}1. Checking Bob installation...${NC}"
 if command -v bob &> /dev/null; then
@@ -30,7 +34,7 @@ echo ""
 echo -e "${BLUE}2. Checking for API key in environment...${NC}"
 if [ -n "$BOB_API_KEY" ]; then
     echo -e "${GREEN}✓ BOB_API_KEY is set in environment${NC}"
-    echo "   Key: ${BOB_API_KEY:0:10}...${BOB_API_KEY: -4}"
+    echo "   Key: ${BOB_API_KEY:0:3}***"
 else
     echo -e "${YELLOW}⚠ BOB_API_KEY not set in environment${NC}"
     
@@ -166,7 +170,8 @@ else
     echo "  ./setup-bob-api-key.sh"
     echo ""
     echo "Or set your API key manually:"
-    echo "  export BOB_API_KEY='your_key_here'"
+    echo "  # Add BOB_API_KEY to the project .env (use-cases/<project>/.env), then:"
+    echo "  source $SCRIPT_DIR/../load-env.sh"
 fi
 
 echo ""

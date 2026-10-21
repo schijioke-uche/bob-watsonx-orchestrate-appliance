@@ -88,7 +88,7 @@ chmod +x wsl-configure-bob.sh
 ```
 
 This will:
-- Set up your API key: `YOUR_BOB_API_KEY_HERE`
+- Read your API key (`BOB_API_KEY`) from the project `.env` (`use-cases/<project>/.env`, git-ignored)
 - Create configuration files in `~/.bob/`
 - Add Bob to your shell profile
 - Create wrapper scripts
@@ -128,7 +128,7 @@ bob "your task here"
 
 **Option 4: One-time inline**
 ```bash
-BOB_API_KEY=YOUR_BOB_API_KEY_HERE bob "hello"
+source ../load-env.sh && bob "hello"
 ```
 
 ## Configuration Files
@@ -260,8 +260,8 @@ cat /etc/resolv.conf | grep nameserver
 Bob CLI uses these environment variables:
 
 ```bash
-# API Key (required)
-export BOB_API_KEY="YOUR_BOB_API_KEY_HERE"
+# API Key (required) - read from the project .env, never hardcoded
+source ../load-env.sh   # exports BOB_API_KEY
 
 # SSL workaround (recommended)
 export NODE_TLS_REJECT_UNAUTHORIZED=0

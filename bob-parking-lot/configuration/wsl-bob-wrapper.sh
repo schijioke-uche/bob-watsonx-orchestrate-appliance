@@ -2,8 +2,12 @@
 
 # WSL Bob CLI Wrapper - Easy way to run Bob with API key
 
-# Load Bob environment
-if [ -f ~/.bob/.env ]; then
+# Project .env (git-ignored) is the primary source of the API key
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
+source "$SCRIPT_DIR/../load-env.sh"
+
+# Fallback: per-user Bob environment
+if [ -z "${BOB_API_KEY:-}" ] && [ -f ~/.bob/.env ]; then
     source ~/.bob/.env
 fi
 

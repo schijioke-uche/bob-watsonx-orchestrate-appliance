@@ -3,7 +3,11 @@
 # Direct Bob API Calls - Bypass CLI completely
 # Works on all Linux distributions without browser
 
-API_KEY="YOUR_BOB_API_KEY_HERE"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
+LOADER_PATH="$SCRIPT_DIR/../load-env.sh"
+# Credentials are read from the project .env - never hardcode them here.
+source "$LOADER_PATH"
+API_KEY="${BOB_API_KEY:-}"
 API_ENDPOINT="https://api.us-east.bob.ibm.com"
 
 # Colors
@@ -27,6 +31,11 @@ if [ -z "$1" ]; then
     echo "  $0 'create a hello world app' code"
     echo "  $0 'explain quantum computing' ask"
     echo "  $0 'design a REST API' plan"
+    exit 1
+fi
+
+if [ -z "$API_KEY" ]; then
+    echo "Error: BOB_API_KEY is not set. Add it to the project .env (use-cases/<project>/.env) or set BOB_ENV_FILE." >&2
     exit 1
 fi
 
@@ -73,7 +82,7 @@ elif [ "$HTTP_CODE" = "401" ]; then
     echo -e "${RED}✗ Authentication Failed (HTTP 401)${NC}"
     echo ""
     echo "Your API key may be invalid or not authorized for direct API access."
-    echo "API Key: ${API_KEY:0:10}...${API_KEY: -4}"
+    echo "API Key: ${API_KEY:0:3}***"
     echo ""
     echo "Contact #bob-support for:"
     echo "  - Verify API key is active"
